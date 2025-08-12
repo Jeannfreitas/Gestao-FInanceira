@@ -1,0 +1,1 @@
+ALTER TABLE accounts ADD COLUMN initial_balance DECIMAL(15,2) DEFAULT 0.00;
