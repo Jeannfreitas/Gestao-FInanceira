@@ -16,18 +16,23 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @NotBlank(message = "Description is mandatory")
     private String description;
+
     @NotNull(message = "Value is mandatory")
     @Positive(message = "Value must be positive")
     private BigDecimal amount;
+
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Type is mandatory")
     private TransactionType type;
-    private LocalDateTime date = LocalDateTime.now();
+    private LocalDateTime datetime = LocalDateTime.now();
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -65,11 +70,11 @@ public class Transaction {
     }
 
     public LocalDateTime getDate() {
-        return date;
+        return datetime;
     }
 
     public void setDate(LocalDateTime date) {
-        this.date = date;
+        this.datetime = date;
     }
 
     public Account getAccount() {
